@@ -1,0 +1,41 @@
+#include<iostream>
+using namespace std;
+class B;
+class A
+{
+private:
+int x;
+friend float mean(A &a,B &b);
+public:
+void getdata();	
+};
+class B
+{
+	private:
+		int y;
+		friend float mean(A &a,B &b);
+		public:
+			void getdata();
+};
+void A ::getdata()
+{
+	cout<<"enter a value ";
+	cin>>x;
+}
+void B::getdata()
+{
+	cout<<"enter b value ";
+	cin>>y;
+}
+float mean(A &a,B &b)
+{
+	return (float)(a.x+b.y)/2;
+}
+int main()
+{
+	A a;
+	a.getdata();
+	B b;
+	b.getdata();
+	cout<<"MEAN IS "<<mean(a,b);
+}
